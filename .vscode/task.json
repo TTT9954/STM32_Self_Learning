@@ -1,0 +1,26 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build",
+            "type": "shell",
+            "command": "cmake --build build\\Debug"
+        },
+        {
+            "label": "Flash",
+            "type": "shell",
+            "command": "C:/Users/Admin/AppData/Local/stm32cube/bundles/programmer/2.22.0+st.1/bin/STM32_Programmer_CLI.exe",
+            "args": [
+                "-c", "port=SWD", "mode=UR",
+                "-w", "${workspaceFolder}/build\\\\Debug/STM32_Self_Learning.elf",
+                "-v",
+                "-rst"
+            ],
+            "dependsOn": "Build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
